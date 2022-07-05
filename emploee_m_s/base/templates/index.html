@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock  %}
+{% block body %}
+<h1 class="text-center my-3">Employee Management System</h1>
+{% if request.path == '/' %}
+bg-info
+{% endif %}
+<table class="table my-4 table-dark p-2">
+  <thead class="text-uppercase">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Full Name</th>
+      <!-- <th scope="col">Last Name</th> -->
+      <th scope="col">Department</th>
+      <th scope="col">Salery</th>
+      <th scope="col">Bonus</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Hire Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in emps %}
+  <tr>
+  	{{ loop.index }}
+  	<td>{{i.id}}. </td>
+  	<td>{{i.first_name}} {{i.last_name}} </td>
+  	<!-- <td> </td> -->
+  	<td>{{i.dept}} </td>
+  	<td>{{i.salery}} </td>
+  	<td>{{i.bonus}} </td>
+  	<td>{{i.phone}} </td>
+  	<td>{{i.hire_date}} </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<br>
+ {% if not emps %}
+<b class="text-center text-capitalize my-4 d-block text-danger">not found any record.</b>
+  {% endif %}
+{% endblock %}
